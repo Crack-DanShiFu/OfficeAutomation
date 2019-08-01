@@ -1,0 +1,78 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.top {
+    width: 1140px;
+    float: left;
+}
+
+.top-content {
+    width: 1140px;
+    float: right;
+}
+
+.top-content .panel-body {
+    width: 1140px;
+    padding: 0px;
+    /*overflow-y: scroll*/
+
+}
+
+.top-content .panel-heading {
+    height: 38px;
+}
+
+.top-content h3 {
+    width: 100px;
+    height: 26px;
+    float: left;
+
+}
+
+#mytab tr td {
+    text-align: center;
+
+}
+
+
+#datetimepicker1 {
+    margin-top: -8px;
+    width: 266px;
+    float: right;
+}
+
+.top-left {
+    width: 240px;
+}
+
+#detailed_pop .modal-dialog {
+    width: 800px;
+}
+
+#detailed_pop .modal-body > ul {
+    list-style: none;
+    height: 650px;
+}
+ul{
+    list-style: none;
+}
+
+#detailed_pop .input-group {
+    width: 32%;
+    float: left;
+    margin: 5px;
+}
+
+#detailed_pop .aLineTwe {
+    width: 48%;
+    float: left;
+    margin: 5px;
+}
+
+#detailed_pop .alineOne {
+    width: 97%;
+    float: left;
+    margin: 5px;
+}

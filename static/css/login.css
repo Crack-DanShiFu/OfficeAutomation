@@ -1,0 +1,49 @@
+*{
+    outline: none;
+}
+.content .login-panel {
+    width: 400px;
+    margin: auto;
+    margin-top: 60px;
+}
+.modal-body{
+    margin-top: 10px;
+}
+.modal-body input{
+    height: 40px;
+}
+.content .login-panel h3 {
+    text-align: center;
+    margin: auto;
+}
+.modal-footer .selectpicker {
+    width: 70px;
+    margin-right: 5px;
+    float: left;
+}
+.modal-footer  button{
+    width: 49%;
+    margin-left: 2px;
+    float: left;
+}
+
+.modal-footer .register-btn{
+    width: 110px;
+    float: right;
+}
+.gotologin{
+    width: 180px;
+    margin-left: 135px;
+    text-decoration:none;
+}
+.gotologin:hover{
+    text-decoration:none;
+}
+
+.img-box{
+    width: 64px;
+    margin: auto;
+}
+.img-box .img-circle{
+    width: 64px;
+}

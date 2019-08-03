@@ -3,8 +3,31 @@
 {% endblock %}
 {% block main %}
     <title>管理员首页</title>
-    <script type="text/javascript" src="/static/js/index.js"></script>
+    <script type="text/javascript" src="/static/js/manage_user.js"></script>
     <link rel="stylesheet" href="/static/css/manage_user.css"/>
     <div class="content">
+
+        <div class="top-content">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div>
+                        <h3 class="panel-title">
+                            今日任务
+                        </h3>
+                        <div class='input-group date' id='datetimepicker2'>
+                            <input name="startTime" type='text' class="form-control" placeholder="日期"/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <table id="mytab2" class="table table-hover"></table>
+                </div>
+            </div>
+        </div>
+
     </div>
 {% endblock %}

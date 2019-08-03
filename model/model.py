@@ -22,6 +22,14 @@ class Users(db.Model, UserMixin):
     def get_id(self):
         return self.id
 
+    def get_info(self):
+        json_data = {
+            'id': self.id,
+            'name': self.name,
+            'employee_type': self.employee_type
+        }
+        return json_data
+
 
 class WorkList(db.Model):
     __tableName__ = 'work_list'

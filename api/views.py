@@ -14,9 +14,17 @@ def index():
     return "api"
 
 
-@api.route('/getWorkList/')
+@api.route('/getWorkList/', methods=['POST'])
 @login_required
 def getWorkList():
     user_name = session.get('user_name')
     d = datetime.datetime.now().strftime('%Y-%m-%d')
     return queryWorkListByName(user_name, d)
+
+
+@api.route('/getUserList/', methods=['POST'])
+@login_required
+def getUserList():
+    # user_name = session.get('user_name')
+    # d = datetime.datetime.now().strftime('%Y-%m-%d')
+    return queryUserList('用户')

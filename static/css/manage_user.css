@@ -1,0 +1,38 @@
+
+.top {
+    width: 1140px;
+    float: left;
+}
+
+.top-content {
+    width: 1140px;
+    float: right;
+}
+
+.top-content .panel-body {
+    width: 1140px;
+    padding: 0px;
+    /*overflow-y: scroll*/
+
+}
+
+.top-content .panel-heading {
+    height: 38px;
+}
+
+.top-content h3 {
+    width: 100px;
+    height: 26px;
+    float: left;
+
+}
+
+#datetimepicker2 {
+    margin-top: -8px;
+    width: 266px;
+    float: right;
+}
+
+#mytab2 tr td {
+    text-align: center;
+}

@@ -2,26 +2,15 @@
 
 window.onload = function () {
     $(function () {
-        var picker1 = $('#datetimepicker1').datetimepicker({
+        var picker1 = $('#datetimepicker2').datetimepicker({
             format: 'YYYY-MM-DD',
             locale: moment.locale('zh-cn'),
         });
-        $('#Acceptance_time_div,#reply_time_div,#send_power_time_div').datetimepicker({
-            format: 'YYYY-MM-DD HH:mm:ss',
-            locale: moment.locale('zh-cn'),
-        });
-
-
-        // picker1.on('dp.change', function (e) {
-        // });
-
-
-        $(".modal-dialog").draggable();
     });
 
-    $('#mytab').bootstrapTable({
+    $('#mytab2').bootstrapTable({
         method: 'POST',
-        url: "/api/getWorkList/",//请求路径
+        url: "/api/getUserList/",//请求路径
         striped: true, //是否显示行间隔色
         pageNumber: 1, //初始化加载第一页
         pagination: true,//是否分页
@@ -31,12 +20,13 @@ window.onload = function () {
         showRefresh: true,//刷新按钮
         columns: [
             {
-                title: '户号',
-                field: 'user_no',
+                title: 'id',
+                field: 'id',
                 sortable: true
-            }, {
-                title: '户名',
-                field: 'user_na',
+            },
+            {
+                title: '用户名',
+                field: 'name',
                 sortable: true
             }, {
                 title: '业务类型',
@@ -75,11 +65,3 @@ window.onload = function () {
     $("td,th").addClass("text-center");
 }
 
-let detailed_pop_init = function (index) {
-
-    var row = $('#mytab').bootstrapTable('getData')[index]
-    for (let i in row) {
-        $('#detailed_pop_form textarea[name="' + i + '"],input[name="' + i + '"]').val(row[i])
-    }
-
-}

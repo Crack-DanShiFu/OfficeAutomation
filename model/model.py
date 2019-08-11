@@ -12,7 +12,7 @@ class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(10))
     cell_phone_number = db.Column(db.String(12))
-    password = db.Column(db.String(20))
+    password = db.Column(db.Text)
     employee_type = db.Column(db.String(5))
 
     # 定义验证密码的函数confirm_password
@@ -25,7 +25,7 @@ class Users(db.Model, UserMixin):
     def get_info(self):
         json_data = {
             'id': self.id,
-            'name': self.name,
+            'user_name': self.name,
             'employee_type': self.employee_type
         }
         return json_data
@@ -39,7 +39,7 @@ class WorkList(db.Model):
     work_plan = db.Column(db.String(50))  # 工作计划
     user_name = db.Column(db.String(10))  # 用户名
     source = db.Column(db.String(10))  # 来源
-    completion_time = db.Column(db.DateTime)  # 完成时间
+    release_time = db.Column(db.DateTime)  # 管理员发布时间
     rate_of_progress = db.Column(db.String(50))  # 进度
     ######
     user_no = db.Column(db.String(10))  # 户号
@@ -54,10 +54,11 @@ class WorkList(db.Model):
     construction_send_time = db.Column(db.DateTime)  # 施工发出时间
     construction_complete_time = db.Column(db.DateTime)  # 施工完成时间
     user_requirement = db.Column(db.String(50))  # 用户需求概况
-    design_department = db.Column(db.String(10))  # 设计单位 (是否为集体企业)
-    construction_department = db.Column(db.String(10))  # 施工单位(是否为集体企业)
+    design_department = db.Column(db.String(10), default="23公司")  # 设计单位 (是否为集体企业)
+    construction_department = db.Column(db.String(10), default="深圳")  # 施工单位(是否为集体企业)
     send_power_time = db.Column(db.DateTime)  # 送电时间
     address = db.Column(db.String(50))  # 地址
+    state = db.Column(db.String(10), default="未提交")  # 地址
 
     ######
 
@@ -70,7 +71,7 @@ class WorkList(db.Model):
             'user_name': self.user_name,
             'source': self.source,
             'rate_of_progress': self.rate_of_progress,
-            'completion_time': str(self.completion_time),
+            'release_time': str(self.release_time),
             ######
             'user_no': self.user_no,
             'user_na': self.user_na,
@@ -88,7 +89,22 @@ class WorkList(db.Model):
             'construction_department': self.construction_department,
             'send_power_time': str(self.send_power_time),
             'address': self.address,
+            'state': self.state,
+        }
+        return json_data
 
+
+class WorkConclusion(db.Model):
+    __tableName__ = 'work_Conclusion'
+    user_name = db.Column(db.String(10), primary_key=True)  # 用户名
+    data_time = db.Column(db.DateTime, primary_key=True)  # 用户名
+    conclusion = db.Column(db.Text)
+
+    def get_info(self):
+        json_data = {
+            'user_name': self.user_name,
+            'data_time': str(self.data_time),
+            'conclusion': self.conclusion
         }
         return json_data
 

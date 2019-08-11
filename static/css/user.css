@@ -17,7 +17,6 @@
     width: 1140px;
     padding: 0px;
     /*overflow-y: scroll*/
-
 }
 
 .top-content .panel-heading {
@@ -36,7 +35,7 @@
 }
 
 
-#datetimepicker1 {
+#userselectWorkDatetime {
     margin-top: -8px;
     width: 266px;
     float: right;
@@ -52,7 +51,7 @@
 
 #detailed_pop .modal-body > ul {
     list-style: none;
-    height: 650px;
+    height: 720px;
 }
 ul{
     list-style: none;

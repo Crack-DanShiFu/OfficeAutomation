@@ -27,7 +27,7 @@
 
 }
 
-#datetimepicker2 {
+#selectWorkDatetime {
     margin-top: -8px;
     width: 266px;
     float: right;
@@ -35,4 +35,36 @@
 
 #mytab2 tr td {
     text-align: center;
+}
+
+
+#detailed_pop2 .modal-dialog {
+    width: 800px;
+}
+
+#detailed_pop2 .modal-body > ul {
+    list-style: none;
+    height: 650px;
+}
+
+ul {
+    list-style: none;
+}
+
+#detailed_pop2 .input-group {
+    width: 32%;
+    float: left;
+    margin: 5px;
+}
+
+#detailed_pop2 .aLineTwe {
+    width: 48%;
+    float: left;
+    margin: 5px;
+}
+
+#detailed_pop2 .alineOne {
+    width: 97%;
+    float: left;
+    margin: 5px;
 }

@@ -1,0 +1,16 @@
+*{
+    outline: none;
+}
+.content .modify-panel {
+    width: 400px;
+    margin: auto;
+    margin-top: 60px;
+}
+
+.content .img-box{
+    width: 64px;
+    margin: auto;
+}
+.img-box .img-circle{
+    width: 64px;
+}

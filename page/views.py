@@ -19,11 +19,6 @@ def index():
         return render_template('user.html')
 
 
-# @page.route('/login/')
-# def login_page():
-#     return render_template('login.html', form=form)
-
-
 @page.route('/register/')
 def register_page():
     return render_template('register.html')
@@ -43,6 +38,13 @@ def manage_user_page():
     if session['employee_type'] == '用户':
         return redirect(url_for('page.user_page'))
     return render_template('manage_user.html')
+
+
+@page.route('/modifyInfo/')
+@login_required
+def modify_info():
+    user_name = session.get('user_name')
+    return render_template('modify_info.html', data=user_name)
 
 
 @page.route("/logout")

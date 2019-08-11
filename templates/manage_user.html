@@ -14,7 +14,7 @@
                         <h3 class="panel-title">
                             今日任务
                         </h3>
-                        <div class='input-group date' id='datetimepicker2'>
+                        <div class='input-group date' id='selectWorkDatetime'>
                             <input name="startTime" type='text' class="form-control" placeholder="日期"/>
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
@@ -28,6 +28,228 @@
                 </div>
             </div>
         </div>
-
     </div>
+
+
+    {#详情#}
+    <div class="modal fade" id="detailed_pop2" tabindex="-1" role="dialog" aria-labelledby="detailed_pop_Label"
+         draggable="true"
+         aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="detailed_pop_Label">
+                        详情
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form id="detailed_pop_form2" action="/api/addUserTask/" method="POST">
+                        <ul>
+                            <li>
+                                <div class="panel panel-success">
+                                    <div class="panel-heading" data-toggle="collapse"
+                                         href="#detailed_pop_collapseOne">
+                                        <h4 class="panel-title">
+                                            基本信息
+                                        </h4>
+                                    </div>
+                                    <div id="detailed_pop_collapseOne" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">id</span>
+                                                <input name="id" type="text" class="form-control" readonly="readonly"
+                                                       placeholder="">
+                                            </div>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">用户</span>
+                                                <input name="user_name" type="text" class="form-control"
+                                                       readonly="readonly" placeholder="">
+                                            </div>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">户号</span>
+                                                <input name="user_no" type="text" class="form-control"
+                                                       id="user_no" placeholder="" data-bv-notempty="true"
+                                                       data-bv-notempty-message="不能为空">
+                                            </div>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">户名</span>
+                                                <input name="user_na" type="text" class="form-control" placeholder="">
+                                            </div>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">业务类型</span>
+                                                <input name="business_type" type="text" class="form-control"
+                                                       placeholder="">
+                                            </div>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">流程号</span>
+                                                <input name="process_no" type="text" class="form-control"
+                                                       placeholder="">
+                                            </div>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">容量</span>
+                                                <input name="capacity" type="text" class="form-control" placeholder="">
+                                            </div>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">地址</span>
+                                                <input name="address" type="text" class="form-control" placeholder="">
+                                            </div>
+                                            <div id="release_time_div" class="input-group date">
+                                                <span class="input-group-addon">时间</span>
+                                                <input name="release_time" type="text" readonly="readonly" class="form-control"
+                                                       placeholder="">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <li>
+                                <div class="panel panel-info">
+                                    <div class="panel-heading" data-toggle="collapse"
+                                         href="#detailed_pop_collapseTwe">
+                                        <h4 class="panel-title">
+                                            供电公司出资接入系统
+                                        </h4>
+                                    </div>
+                                    <div id="detailed_pop_collapseTwe" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            <div id="Acceptance_time_div" class="input-group date aLineTwe">
+                                                <span class="input-group-addon">受理时间</span>
+                                                <input name="Acceptance_time" type="text" class="form-control"
+                                                       placeholder="">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+
+
+                                            <div id="reply_time_div" class="input-group aLineTwe">
+                                                <span class="input-group-addon">供电方案答复时间</span>
+                                                <input name="reply_time" type="text" class="form-control"
+                                                       placeholder="">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                            <div id="send_power_time_div" class="input-group aLineTwe">
+                                                <span class="input-group-addon">送电时间</span>
+                                                <input name="send_power_time" type="text" class="form-control"
+                                                       placeholder="">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                            <div id="design_send_time_div" class="input-group aLineTwe">
+                                                <span class="input-group-addon">设计联系单发出时间</span>
+                                                <input name="design_send_time" type="text" class="form-control"
+                                                       placeholder="">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                            <div id="design_complete_time_div" class="input-group aLineTwe">
+                                                <span class="input-group-addon">设计完成时间</span>
+                                                <input name="design_complete_time" type="text" class="form-control"
+                                                       placeholder="">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+
+                                            <div id="construction_send_time_div" class="input-group aLineTwe">
+                                                <span class="input-group-addon">施工联系单发出时间</span>
+                                                <input name="construction_send_time" type="text" class="form-control"
+                                                       placeholder="">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                            <div id="construction_complete_time_div" class="input-group aLineTwe">
+                                                <span class="input-group-addon">施工完成时间</span>
+                                                <input name="construction_complete_time" type="text"
+                                                       class="form-control" placeholder="">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="panel panel-info">
+                                    <div class="panel-heading" data-toggle="collapse"
+                                         href="#detailed_pop_collapseThree">
+                                        <h4 class="panel-title">
+                                            用户例电力施工
+                                        </h4>
+                                    </div>
+                                    <div id="detailed_pop_collapseThree" class="panel-collapse collapse in">
+                                        <div class="input-group aLineTwe">
+                                            <span class="input-group-addon">设计单位</span>
+                                            <input name="design_department" type="text" class="form-control"
+                                                   placeholder="23公司">
+                                        </div>
+                                        <div class="input-group aLineTwe">
+                                            <span class="input-group-addon">施工单位</span>
+                                            <input name="construction_department" type="text" class="form-control"
+                                                   placeholder="阳江火电">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>用户需求概况</label>
+                                            <textarea name="user_requirement" class="form-control" rows="6"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="submit" class="btn btn-primary" onclick="addUserTaskSubmit()">
+                        提交更改
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    {#detailed_list_pop2#}
+    <div class="modal fade" id="detailed_list_pop2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        任务列表
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    {#                    detailed_pop2#}
+                    <button type="button" onclick="" data-toggle="modal" class="btn btn-primary alert_detail_model">
+                        添加任务
+                    </button>
+                    <table id="setUserWorkList" class="table table-hover"></table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                    {#                    <button type="button" class="btn btn-primary">#}
+                    {#                    </button>#}
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 {% endblock %}

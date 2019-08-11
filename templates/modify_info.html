@@ -1,0 +1,52 @@
+{% extends 'nav.html' %}
+{% block title %}
+{% endblock %}
+{% block main %}
+    <title>修改个人信息</title>
+    <link rel="stylesheet" href="/static/css/modify.css"/>
+    <script type="text/javascript" src="/static/js/login.js"></script>
+    <div class="content">
+        <div class="panel panel-default modify-panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">信息修改</h3>
+            </div>
+            <div class="panel-body">
+                <form id="user_modify_form" action="/api/user_modify/" method="post">
+                    <div class="form-group img-box">
+                        <img src="/static/img/head.png" class="img-circle">
+
+                    </div>
+                    <div class="modal-body" id="model-body">
+                        <div class="form-group">
+                            <input name="name" type="text" class="form-control" placeholder="用户名" readonly="readonly"
+                                   value="{{ data }}" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <input name="cell_phone_number" type="tel" class="form-control" placeholder="手机号"
+                                   autocomplete="off">
+                        </div>
+
+                        <div class="form-group">
+                            <input name="originalPw" class="form-control" placeholder="原密码"
+                                   autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <input name="password" class="form-control" placeholder="新密码"
+                                   autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <input name="password" class="form-control" placeholder="确认密码"
+                                   autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="form-group">
+                            <button type="button" onclick="modify_submit()" class="btn btn-info register-btn">修改
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

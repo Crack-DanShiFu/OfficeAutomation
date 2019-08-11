@@ -16,34 +16,29 @@
                     <div id="collapseOne" class="panel-collapse collapse in">
                         <div class="panel-body">
                             <div class="top-left">
-                                <div class="progress">
+             {#                   <div class="progress">
                                     <div class="progress-bar progress-bar-success" role="progressbar"
-                                         aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                                         aria-valuenow="6" aria-valuemin="0" aria-valuemax="100"
                                          style="width: 40%;">
                                         <span class="sr-only">40% 完成</span>
                                     </div>
                                     <div class="progress-bar progress-bar-info" role="progressbar"
-                                         aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                                         aria-valuenow="6" aria-valuemin="0" aria-valuemax="100"
                                          style="width: 60%;">
                                         <span class="sr-only">60% 完成（信息）</span>
                                     </div>
-                                </div>
-
+                                </div>#}
                                 {#                        <h2>今日任务</h2>#}
-                                <h4><span class="label label-success">已完成：</span> 0</h4>
-                                <h4><span class="label label-info">未完成：</span>15</h4>
-
+                                <h4><span class="label label-success">已完成：</span> <span class="finished">0</span></h4>
+                                <h4><span class="label label-info">未完成：</span> <span class="unfinished">0</span></h4>
                                 <h3>
                                     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">
                                         今日工作报告
                                     </button>
-                                    未完成
+                                    <span>未完成</span>
                                 </h3>
                             </div>
-
                         </div>
-
-
                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                              aria-hidden="true">
                             <div class="modal-dialog">
@@ -56,23 +51,24 @@
                                             今日报告
                                         </h4>
                                     </div>
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label for="name">总结</label>
-                                            <textarea class="form-control" rows="6"></textarea>
+                                    <form action="/api/addWorkConclusion/" method="post">
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label for="name">总结</label>
+                                                <textarea name="conclusion" class="form-control" rows="6"></textarea>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                                        </button>
-                                        <button type="button" class="btn btn-primary">
-                                            提交更改
-                                        </button>
-                                    </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                            </button>
+                                            <button type="button" onclick="submit()" class="btn btn-primary">
+                                                提交更改
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal -->
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -84,7 +80,7 @@
                         <h3 class="panel-title">
                             今日任务
                         </h3>
-                        <div class='input-group date' id='datetimepicker1'>
+                        <div class='input-group date' id='userselectWorkDatetime'>
                             <input name="startTime" type='text' class="form-control" placeholder="日期"/>
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
@@ -92,7 +88,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="panel-body">
                     <table id="mytab" class="table table-hover"></table>
                 </div>
@@ -106,17 +101,17 @@
          draggable="true"
          aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                    <h4 class="modal-title" id="detailed_pop_Label">
-                        详情
-                    </h4>
-                </div>
-                <div class="modal-body">
-                    <form id="detailed_pop_form" action="#" method="post">
+            <form id="detailed_pop_form" action="/api/userCommit/" method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="detailed_pop_Label">
+                            详情
+                        </h4>
+                    </div>
+                    <div class="modal-body">
                         <ul>
                             <li>
                                 <div class="panel panel-success">
@@ -129,16 +124,24 @@
                                     <div id="detailed_pop_collapseOne" class="panel-collapse collapse in">
                                         <div class="panel-body">
                                             <div class="input-group">
+                                                <span class="input-group-addon">id</span>
+                                                <input name="id" type="text" class="form-control" readonly="readonly"
+                                                       placeholder="">
+                                            </div>
+                                            <div class="input-group">
                                                 <span class="input-group-addon">户号</span>
-                                                <input name="user_no" type="text" class="form-control" placeholder="">
+                                                <input name="user_no" type="text" class="form-control"
+                                                       readonly="readonly" placeholder="">
                                             </div>
                                             <div class="input-group">
                                                 <span class="input-group-addon">户名</span>
-                                                <input name="user_na" type="text" class="form-control" placeholder="">
+                                                <input name="user_na" type="text" class="form-control"
+                                                       readonly="readonly" placeholder="">
                                             </div>
                                             <div class="input-group">
                                                 <span class="input-group-addon">业务类型</span>
                                                 <input name="business_type" type="text" class="form-control"
+                                                       readonly="readonly"
                                                        placeholder="">
                                             </div>
 
@@ -146,16 +149,46 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon">流程号</span>
                                                 <input name="process_no" type="text" class="form-control"
+                                                       readonly="readonly"
                                                        placeholder="">
                                             </div>
                                             <div class="input-group">
                                                 <span class="input-group-addon">容量</span>
-                                                <input name="capacity" type="text" class="form-control" placeholder="">
+                                                <input name="capacity" type="text" class="form-control"
+                                                       readonly="readonly" placeholder="">
                                             </div>
                                             <div class="input-group">
                                                 <span class="input-group-addon">地址</span>
-                                                <input name="address" type="text" class="form-control" placeholder="">
+                                                <input name="address" type="text" class="form-control"
+                                                       readonly="readonly" placeholder="">
                                             </div>
+                                            <div id="release_time_div" class="input-group date">
+                                                <span class="input-group-addon">时间</span>
+                                                <input name="release_time" type="text" readonly="readonly"
+                                                       class="form-control"
+                                                       placeholder="">
+                                            </div>
+                                            <div class="input-group date">
+                                                <span class="input-group-addon">状态</span>
+                                                <input name="state" type="text" readonly="readonly"
+                                                       class="form-control"
+                                                       placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <li>
+                                <div class="panel panel-info">
+                                    <div class="panel-heading" data-toggle="collapse"
+                                         href="#detailed_pop_collapseTwe">
+                                        <h4 class="panel-title">
+                                            供电公司出资接入系统
+                                        </h4>
+                                    </div>
+                                    <div id="detailed_pop_collapseTwe" class="panel-collapse collapse in">
+                                        <div class="panel-body">
                                             <div id="Acceptance_time_div" class="input-group date aLineTwe">
                                                 <span class="input-group-addon">受理时间</span>
                                                 <input name="Acceptance_time" type="text" class="form-control"
@@ -178,45 +211,42 @@
                                                 <span class="input-group-addon">送电时间</span>
                                                 <input name="send_power_time" type="text" class="form-control"
                                                        placeholder="">
-                                                        <span class="input-group-addon">
+                                                <span class="input-group-addon">
                                                     <span class="glyphicon glyphicon-calendar"></span>
                                                 </span>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </li>
-                            <li>
-                                <div class="panel panel-info">
-                                    <div class="panel-heading" data-toggle="collapse"
-                                         href="#detailed_pop_collapseTwe">
-                                        <h4 class="panel-title">
-                                            供电公司出资接入系统
-                                        </h4>
-                                    </div>
-                                    <div id="detailed_pop_collapseTwe" class="panel-collapse collapse in">
-                                        <div class="panel-body">
-                                            <div class="input-group aLineTwe">
+                                            <div id="design_send_time_div" class="input-group aLineTwe">
                                                 <span class="input-group-addon">设计联系单发出时间</span>
                                                 <input name="design_send_time" type="text" class="form-control"
                                                        placeholder="">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
                                             </div>
-                                            <div class="input-group aLineTwe">
+                                            <div id="design_complete_time_div" class="input-group aLineTwe">
                                                 <span class="input-group-addon">设计完成时间</span>
                                                 <input name="design_complete_time" type="text" class="form-control"
                                                        placeholder="">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
                                             </div>
 
-                                            <div class="input-group aLineTwe">
+                                            <div id="construction_send_time_div" class="input-group aLineTwe">
                                                 <span class="input-group-addon">施工联系单发出时间</span>
                                                 <input name="construction_send_time" type="text" class="form-control"
                                                        placeholder="">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
                                             </div>
-                                            <div class="input-group aLineTwe">
+                                            <div id="construction_complete_time_div" class="input-group aLineTwe">
                                                 <span class="input-group-addon">施工完成时间</span>
                                                 <input name="construction_complete_time" type="text"
                                                        class="form-control" placeholder="">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -250,19 +280,20 @@
                                 </div>
                             </li>
                         </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                        </button>
+                        <button type="button" onclick="save_submit()" class="btn btn-primary">
+                            保存
+                        </button>
+                        <button type="button" onclick="work_submit()" class="btn btn-success">
+                            提交
+                        </button>
 
-                    </form>
-                </div>
-
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                    </button>
-                    <button type="button" class="btn btn-primary">
-                        提交更改
-                    </button>
-                </div>
-            </div><!-- /.modal-content -->
+                    </div>
+                </div><!-- /.modal-content -->
+            </form>
         </div><!-- /.modal -->
     </div>
 

@@ -2,7 +2,7 @@ DIALECT = 'mysql'
 DRIVER = 'pymysql'
 USERNAME = 'root'
 PASSWORD = 'root'
-HOST = '47.107.173.225'
+HOST = '127.0.0.1'
 PORT = '3306'
 DATABASE = 'OfficeAutomation'
 
